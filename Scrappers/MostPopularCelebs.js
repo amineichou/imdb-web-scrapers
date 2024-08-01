@@ -37,20 +37,20 @@ getPageHTML()
         ".ipc-inline-list__item.sc-ada31d55-5.kwvPJV"
       );
       const imageElement = $(element).find(
-          ".ipc-media.ipc-media--avatar.ipc-image-media-ratio--avatar.ipc-media--base.ipc-media--custom.ipc-media--avatar-circle.ipc-avatar__avatar-image.ipc-media__img img"
-        );
-        
-        const name = nameElement.text();
-        const image = imageElement.attr("src");
-        const datails = [];
-        
-        datailsElement.each((index, element) => {
-            datails.push($(element).text().trim());
-        });
-        
-        if (name) {
-            celebs.push({ name, image, datails });
-        }
+        ".ipc-media.ipc-media--avatar.ipc-image-media-ratio--avatar.ipc-media--base.ipc-media--custom.ipc-media--avatar-circle.ipc-avatar__avatar-image.ipc-media__img img"
+      );
+
+      const name = nameElement.text();
+      const image = imageElement.attr("src");
+      const datails = [];
+
+      datailsElement.each((index, element) => {
+        datails.push($(element).text().trim());
+      });
+
+      if (name) {
+        celebs.push({ name, image, datails });
+      }
     });
     const folderPath = path.join(__dirname, "./Res");
     if (!fs.existsSync(folderPath)) {
@@ -59,10 +59,14 @@ getPageHTML()
     // console.log(celebs);
     // celebs variable has the data
     // put this data into a file
-    fs.writeFile("./Res/MostPopularCelebs.json", JSON.stringify(celebs), (err) => {
-      if (err) throw err;
-      console.log("The JSON file has been created successfully!");
-    });
+    fs.writeFile(
+      "./Res/MostPopularCelebs.json",
+      JSON.stringify(celebs),
+      (err) => {
+        if (err) throw err;
+        console.log("The JSON file has been created successfully!");
+      }
+    );
   })
   .catch((err) => {
     console.log("Error: " + err);
